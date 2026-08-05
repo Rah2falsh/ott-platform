@@ -142,6 +142,7 @@ alt={`Movie Poster ${i}`}
 fill
 className="object-cover"
 sizes="(max-width: 1024px) 669px, 991px"
+unoptimized
 />
 </div>
 ))}
