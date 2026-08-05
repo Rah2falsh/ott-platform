@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <header className="absolute top-0 left-0 right-0 z-50 -mt-6 px-6 md:px-12 pt-0 pb-0 flex items-center justify-between bg-transparent">
       
-      {/* اللوجو */}
+      {/* Main logo */}
       <Link href="/" className="flex items-center z-10 pl-0">
         <div className="relative w-60 h-[200px] md:w-80 md:h-[260px]">
           <Image 
@@ -92,7 +92,6 @@ Subscriptions
           </svg>
         </button>
 
-        {/* زر المنيو للجوال (المربع بالمواصفات المطلوبة) */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden flex items-center justify-center bg-[#0F0F0F] rounded-[6px] border-[3px] border-[#1F1F1F] p-[12px] gap-[10px] text-white hover:border-slate-700 transition"
@@ -108,7 +107,7 @@ Subscriptions
         </button>
       </div>
 
-      {/* القائمة المنسدلة الجانبية للجوال */}
+      {/*   sidebar of mopile */}
       {isOpen && (
         <div className="absolute top-full left-6 right-6 mt-2 bg-[#0F0F0F] border-[3px] border-[#1F1F1F] rounded-[10px] p-4 flex flex-col gap-2 md:hidden shadow-2xl z-50">
           <Link
