@@ -251,8 +251,8 @@ const backdropGrid = [...moviePosters, ...moviePosters, ...moviePosters, ...movi
             </div>
           </div>
         </div>
-<div className="flex flex-row gap-6 w-full max-w-[1284px] items-start mt-[30px]">
-
+        <div className="flex flex-col lg:flex-row gap-6 w-full max-w-[1284px] mx-auto px-4 items-start mt-[30px]">
+          
   {/* LEFT SIDE */}
   <div className="flex flex-col gap-6 flex-1 min-w-0">
 
@@ -437,7 +437,7 @@ const backdropGrid = [...moviePosters, ...moviePosters, ...moviePosters, ...movi
 
 
   {/* RIGHT SIDE (SIDEBAR) */}
-  <div className="w-[416px] border border-[#262626] bg-[#1A1A1A] rounded-[10px] p-[40px] flex flex-col gap-[30px] flex-shrink-0">
+  <div className="w-full lg:w-[416px] border border-[#262626] bg-[#1A1A1A] rounded-[10px] p-6 md:p-[40px] flex flex-col gap-[30px] flex-shrink-0">
     <div className="flex flex-col gap-2">
       <p className="text-[#999] text-sm flex items-center gap-2">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

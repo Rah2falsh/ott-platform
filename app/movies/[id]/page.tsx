@@ -271,7 +271,7 @@ export default function Page({
 
 
       {/* ================= DETAILS ================= */}
-      <div className="flex flex-row gap-6 w-full max-w-[1284px] items-start">
+      <div className="flex flex-col lg:flex-row gap-6 w-full max-w-[1284px] mx-auto px-4 items-start">
 
 {/* LEFT SIDE */}
 <div className="flex flex-col gap-6 flex-1 min-w-0">
@@ -436,9 +436,8 @@ export default function Page({
 
 
 {/* RIGHT SIDE */}
-<div className="w-[416px] border border-[#262626] bg-[#1A1A1A] rounded-[10px] p-[40px] flex flex-col gap-[30px]">
-
-
+<div className="w-full lg:w-[416px] border border-[#262626] bg-[#1A1A1A] rounded-[10px] p-6 md:p-[40px] flex flex-col gap-[30px]">
+  
   <div className="flex flex-col gap-2">
     <p className="text-[#999] text-sm flex items-center gap-2">
 
