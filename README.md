@@ -8,7 +8,7 @@ The application integrates with the **TMDB API** to display real movie data whil
 
 ## Live Demo
 
-https://ott-platform-kxx6qcfor-rahaf4.vercel.app
+https://ott-platform-chi.vercel.app
 
 ---
 
