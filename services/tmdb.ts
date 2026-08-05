@@ -3,7 +3,7 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 
 export const tmdbApi = {
 
-  // جلب الأفلام الرائجة (Trending) مع مدة الفيلم
+
   async getTrendingMovies() {
     try {
       const res = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}`;
@@ -16,7 +16,7 @@ export const tmdbApi = {
       const data = await response.json();
       const movies = data.results || [];
 
-      // جلب تفاصيل كل فيلم للحصول على runtime
+
       const moviesWithDetails = await Promise.all(
         movies.map(async (movie: any) => {
           try {
@@ -53,7 +53,7 @@ export const tmdbApi = {
     }
   },
 
-  // جلب الإصدارات الجديدة (New Releases / Now Playing)
+
   async getNewReleases() {
     try {
       const res = `${BASE_URL}/movie/now_playing?api_key=${API_KEY}`;
@@ -73,7 +73,7 @@ export const tmdbApi = {
     }
   },
 
-  // جلب قائمة التصنيفات (Genres)
+
   async getGenres() {
     try {
       const res = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
@@ -93,7 +93,7 @@ export const tmdbApi = {
     }
   },
 
-  // جلب الأفلام حسب التصنيف (Genre)
+
   async getMoviesByGenre(genreId: number | string) {
     try {
       const response = await fetch(
@@ -113,7 +113,7 @@ export const tmdbApi = {
       return [];
     }
   },
-    // جلب أفلام Must-Watch مع مدة الفيلم
+
     async getMustWatchMovies() {
       try {
         const response = await fetch(
@@ -127,7 +127,7 @@ export const tmdbApi = {
         const data = await response.json();
         const movies = (data.results || []).slice(0, 10);
   
-        // جلب تفاصيل الأفلام للحصول على runtime
+
         const moviesWithDetails = await Promise.all(
           movies.map(async (movie: any) => {
             try {

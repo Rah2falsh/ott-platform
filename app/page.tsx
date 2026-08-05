@@ -36,6 +36,7 @@ const shuffled = [...data.results].sort(() => 0.5 - Math.random());
 const posters = shuffled
 .filter((m: any) => m.poster_path)
 .map((m: any) => `https://image.tmdb.org/t/p/w500${m.poster_path}`);
+console.log(posters);
 setMoviePosters(posters);
 }
 })
