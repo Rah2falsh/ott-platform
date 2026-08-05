@@ -107,7 +107,7 @@ Subscriptions
         </button>
       </div>
 
-      {/*   sidebar of mopile */}
+      {/*   sidebar of Mobile */}
       {isOpen && (
         <div className="absolute top-full left-6 right-6 mt-2 bg-[#0F0F0F] border-[3px] border-[#1F1F1F] rounded-[10px] p-4 flex flex-col gap-2 md:hidden shadow-2xl z-50">
           <Link
