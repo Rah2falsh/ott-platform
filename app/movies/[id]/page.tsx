@@ -25,9 +25,17 @@ interface Movie {
 export default function Page({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string } | Promise<{ id: string }>;
 }) {
-  const { id } = use(params);
+  const [resolvedParams, setResolvedParams] = useState<{ id: string } | null>(null);
+
+  useEffect(() => {
+    Promise.resolve(params).then(p => {
+      setResolvedParams(p);
+    });
+  }, [params]);
+
+  const id = resolvedParams?.id;
 
   const [movie, setMovie] = useState<Movie | null>(null);
 
@@ -135,8 +143,8 @@ export default function Page({
       );
     }
   };
-  if (!movie) return <div className="text-white p-10">Loading...</div>;
-
+  if (!id || !movie) return <div className="text-white p-10 bg-[#141414] min-h-screen">Loading...</div>;
+  
   const rawPosters = [
     movie?.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : null,
     movie?.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null,
