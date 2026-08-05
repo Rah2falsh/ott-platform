@@ -6,13 +6,13 @@ The application integrates with the **TMDB API** to display real movie data whil
 
 ---
 
-## 🚀 Live Demo
+## Live Demo
 
 https://ott-platform-kxx6qcfor-rahaf4.vercel.app
 
 ---
 
-## ✨ Features
+## Features
 
 - Responsive design across desktop, tablet, and mobile devices.
 - TMDB API integration for fetching real movie data.
@@ -25,7 +25,7 @@ https://ott-platform-kxx6qcfor-rahaf4.vercel.app
 
 ---
 
-## 🎯 Interactive Feature
+## Interactive Feature
 
 ### Genre Filtering
 
