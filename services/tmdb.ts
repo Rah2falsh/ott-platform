@@ -1,4 +1,4 @@
-const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+const API_KEY = "8f5e24fc60071c7126030efdc18a2e6d";
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 export const tmdbApi = {
@@ -136,7 +136,7 @@ export const tmdbApi = {
               );
   
               if (!detailsResponse.ok) {
-                return movie;
+                return movie.id;
               }
   
               const details = await detailsResponse.json();
