@@ -9,12 +9,12 @@ interface Item {
   name?: string;
   poster_path?: string;
   release_date?: string;
-  first_air_date?: string; // للمسلسلات
+  first_air_date?: string; 
 }
 
 interface NewReleasesProps {
   movies?: Item[];
-  contentType?: "movies" | "shows"; // استقبال النوع ديناميكياً
+  contentType?: "movies" | "shows"; 
 }
 
 export default function NewReleases({ movies = [], contentType = "movies" }: NewReleasesProps) {
@@ -46,7 +46,7 @@ export default function NewReleases({ movies = [], contentType = "movies" }: New
         }}
       >
         {movies.map((item) => {
-          // تحديد المسار الصحيح ديناميكياً بناءً على ما إذا كان يحتوي على title (فيلم) أو name (مسلسل) أو حسب الـ contentType الممرر
+       
           const isTvShow = contentType === "shows" || item.name;
           const linkPath = isTvShow ? `/shows/${item.id}` : `/movies/${item.id}`;
           const dateToFormat = item.release_date || item.first_air_date;

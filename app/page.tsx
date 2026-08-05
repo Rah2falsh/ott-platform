@@ -180,17 +180,17 @@ background: 'linear-gradient(to top, #141414 0%, rgba(20, 20, 20, 0) 100%)'
 <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
 
 <div className="text-center mx-auto space-y-3 -mt-12 relative z-20 overflow-visible">
-  <h1 className="text-[60px] font-normal text-white tracking-tight leading-[120%] whitespace-nowrap">
-    The Best Streaming Experience
-  </h1>
+<h1 className="text-[32px] sm:text-[45px] md:text-[60px] font-normal text-white tracking-tight leading-[120%]">
+  The Best Streaming Experience
+</h1>
 
 
-  <p 
-  className="text-[14px] leading-[150%] max-w-4xl mx-auto font-normal text-center"
-  style={{ color: '#999999' }}
->
-  MovieBox is the best streaming experience for watching your favorite movies and shows on demand, anytime, anywhere. With MovieBox, you can enjoy a wide variety of content, including the latest blockbusters, classic movies, popular TV shows, and more. You can also create your own watchlists, so you can easily find the content you want to watch.
-</p>
+<p 
+    className="text-[12px] sm:text-[14px] leading-[150%] max-w-4xl mx-auto font-normal text-center px-4"
+    style={{ color: '#999999' }}
+  >
+    MovieBox is the best streaming experience for watching your favorite movies and shows on demand, anytime, anywhere. With MovieBox, you can enjoy a wide variety of content, including the latest blockbusters, classic movies, popular TV shows, and more. You can also create your own watchlists, so you can easily find the content you want to watch.
+  </p>
           <div className="pt-2">
             <button className="bg-[#E50000] hover:bg-red-700 text-white font-bold px-[24px] py-[18px] rounded-[8px] shadow-lg shadow-red-600/30 transition hover:scale-105 flex items-center gap-[4px] mx-auto text-sm">
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">

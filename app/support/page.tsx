@@ -161,7 +161,7 @@ const filledImages = Array.from({ length: 36 }, (_, i) => {
 <div
   className="
     relative mt-[40px]
-    w-[429px] h-[380px]
+    w-full max-w-[429px] h-[380px]
     rounded-[6px]
     bg-[#0F0F0F]
     p-[20px]
@@ -171,12 +171,12 @@ const filledImages = Array.from({ length: 36 }, (_, i) => {
 >
   <div className="grid grid-cols-4 gap-[20px] -mt-[35px]">
     {movies.slice(0, 16).map((movie) => (
-      <img
-        key={movie.id}
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-        alt={movie.title}
-        className="w-[97.25px] h-[121.75px] rounded-[12px] object-cover"
-      />
+    <img
+    key={movie.id}
+    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+    alt={movie.title}
+    className="w-full h-[120px] rounded-[12px] object-cover"
+  />
     ))}
 
   </div>
@@ -189,12 +189,12 @@ const filledImages = Array.from({ length: 36 }, (_, i) => {
   onSubmit={handleSubmit}
   className="
     w-full max-w-[800px]
-    h-[592px]
+    h-auto min-h-[592px]
     rounded-[10px]
     border border-[#262626]
     bg-[#0F0F0F]
-    p-[40px]
-    flex flex-col gap-[40px]
+    p-[20px] sm:p-[40px]
+    flex flex-col gap-[30px] sm:gap-[40px]
   "
 >
             <div className="grid grid-cols-1 gap-x-[30px] gap-y-[30px] md:grid-cols-2">
@@ -481,7 +481,7 @@ const filledImages = Array.from({ length: 36 }, (_, i) => {
                             {item.num}
                           </div>
                  
-                          <h3 className="text-[20px] leading-[150%] font-medium text-white w-full md:w-[466px]">
+                          <h3 className="text-[18px] sm:text-[20px] leading-[150%] font-medium text-white flex-1">
                             {item.q}
                           </h3>
                         </div>

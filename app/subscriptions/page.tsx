@@ -168,24 +168,24 @@ export default function Subscriptions() {
 <section className="w-full max-w-7xl px-5 mx-auto mt-24 mb-20">
               {/* Section Header */}
           <div className="mb-12">
-            <h2 className="text-[38px] font-bold text-white mb-3">
-              Compare our plans and find the right one for you
-            </h2>
+          <h2 className="text-[24px] sm:text-[32px] md:text-[38px] font-bold text-white mb-3">
+  Compare our plans and find the right one for you
+</h2>
             <p className="text-slate-400 text-[16px]">
               StreamVibe offers three different plans to fit your needs: Basic, Standard, and Premium. Compare the features of each plan and choose the one that&apos;s right for you.
             </p>
           </div>
 
-          {/* Table Container */}
-          <div className="
+{/* Table Container */}
+<div className="
               w-full
               bg-transparent
               border border-[#262626]
               rounded-[12px]
-              overflow-hidden
+              overflow-x-auto
             ">
               
-              <table className="w-full text-left border-collapse">
+              <table className="w-full min-w-[700px] text-left border-collapse">
                           
               {/* Table Header */}
               <thead className="bg-[#0F0F0F]">

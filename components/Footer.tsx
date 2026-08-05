@@ -12,7 +12,7 @@ export default function Footer() {
         }}
       >
         <div className="max-w-7xl w-full mx-auto grid grid-cols-2 md:grid-cols-6 gap-8">
-          {/* القسم الأول: Home */}
+   
           <div className="space-y-[15px]" style={{ width: '100%', maxWidth: '196.67px' }}>
             <h4 className="text-white text-[18px] leading-[150%] font-semibold">Home</h4>
             <div className="space-y-[12px]">
@@ -23,7 +23,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* القسم الثاني: Movies */}
+    
           <div className="space-y-[15px]" style={{ width: '100%', maxWidth: '196.67px' }}>
             <h4 className="text-white text-[18px] leading-[150%] font-semibold">Movies</h4>
             <div className="space-y-[12px]">
@@ -34,7 +34,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* القسم الثالث: Shows */}
+        
           <div className="space-y-[15px]" style={{ width: '100%', maxWidth: '196.67px' }}>
             <h4 className="text-white text-[18px] leading-[150%] font-semibold">Shows</h4>
             <div className="space-y-[12px]">
@@ -44,7 +44,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* القسم الرابع: Support */}
+
           <div className="space-y-[15px]" style={{ width: '100%', maxWidth: '196.67px' }}>
             <h4 className="text-white text-[18px] leading-[150%] font-semibold">Support</h4>
             <div className="space-y-[12px]">
@@ -52,7 +52,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* القسم الخامس: Subscription */}
+
           <div className="space-y-[15px]" style={{ width: '100%', maxWidth: '196.67px' }}>
             <h4 className="text-white text-[18px] leading-[150%] font-semibold">Subscription</h4>
             <div className="space-y-[12px]">
@@ -61,7 +61,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* القسم السادس: Connect With Us (بالمقاسات الجديدة للمربعات 44x44 و Radius 6px وبادينق 12px وجاب 10px) */}
+
           <div className="space-y-[15px]" style={{ width: '100%', maxWidth: '196.67px' }}>
             <h4 className="text-white text-[18px] leading-[150%] font-semibold">Connect With Us</h4>
             <div className="flex items-center gap-[10px] pt-1">
@@ -98,7 +98,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* حقوق النشر وروابط السياسة (اللون #999999 بحجم 14px وارتفاع سطر 150%) */}
+
         <div className="max-w-7xl w-full mx-auto flex flex-col md:flex-row items-center justify-between border-t border-[#1F1F1F] pt-8 text-[14px] leading-[150%] font-normal text-[#999999] gap-4">
           <p>©2026 MovieBox. All Rights Reserved</p>
           <div className="flex gap-6">
