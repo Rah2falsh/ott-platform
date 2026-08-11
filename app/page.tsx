@@ -23,10 +23,7 @@ const [moviePosters, setMoviePosters] = useState<string[]>([
 
 useEffect(() => {
   const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
-
-  fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
-  )
+  fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&t=${Date.now()}`)
     .then((res) => res.json())
     .then((data) => {
       if (data.results && data.results.length > 0) {
