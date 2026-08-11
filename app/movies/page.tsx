@@ -1,8 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import { tmdbApi } from '@/services/tmdb';
 import Navbar from "@/components/Navbar";
 import Footer from '@/components/Footer';
@@ -155,8 +153,10 @@ export default function MoviesAndShowsPage() {
   }, []);
   useEffect(() => {
     async function fetchShows() {
+      const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+
       const res = await fetch(
-        `https://api.themoviedb.org/3/trending/tv/day?api_key=8f5e24fc60071c7126030efdc18a2e6d`
+        `https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}`
       );
       const data = await res.json();
   
@@ -190,7 +190,7 @@ export default function MoviesAndShowsPage() {
 
   return (
     <div className="min-h-screen bg-[#141414] text-white font-['Manrope'] overflow-x-hidden">
-      
+
       <Navbar />
       <main className="pt-[168px] pb-20 flex flex-col items-center gap-8">
         

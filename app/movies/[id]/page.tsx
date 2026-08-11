@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, use } from "react";
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from '@/components/Footer';
 import FreeTrialBanner from '@/components/FreeTrialBanner';
@@ -50,9 +49,9 @@ export default function Page({
 
   const renderStars = (rating: number = 0) => {
     const stars = Math.round(rating / 2);
-  
+
     return Array.from({ length: 5 }).map((_, i) => (
-      <span 
+      <span
         key={i}
         className={i < stars ? "text-[#E50914]" : "text-[#555555]"}
       >
@@ -61,48 +60,77 @@ export default function Page({
     ));
   };
 
+
   useEffect(() => {
+    if (!id) return;
+
     async function fetchExtras() {
-      const creditsRes = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=8f5e24fc60071c7126030efdc18a2e6d`
-      );
+      try {
+        const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
-      const reviewsRes = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=8f5e24fc60071c7126030efdc18a2e6d`
-      );
+        const creditsRes = await fetch(
+          `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`
+        );
 
-      const credits = await creditsRes.json();
-      const reviewsData = await reviewsRes.json();
+        const reviewsRes = await fetch(
+          `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}`
+        );
 
-      setCast(credits.cast?.slice(0, 10) || []);
-      setReviews(reviewsData.results?.slice(0, 4) || []);
+        const credits = await creditsRes.json();
+        const reviewsData = await reviewsRes.json();
 
-      const directorData = credits.crew?.find(
-        (person: any) => person.job === "Director"
-      );
+        setCast(credits.cast?.slice(0, 10) || []);
+        setReviews(reviewsData.results?.slice(0, 4) || []);
 
-      setDirector(directorData || null);
+        const directorData = credits.crew?.find(
+          (person: any) => person.job === "Director"
+        );
 
-      const composerData = credits.crew?.find(
-        (person: any) =>
-          person.job === "Original Music Composer" ||
-          person.department === "Sound"
-      );
+        setDirector(directorData || null);
 
-      setComposer(composerData || null);
+        const composerData = credits.crew?.find(
+          (person: any) =>
+            person.job === "Original Music Composer" ||
+            person.department === "Sound"
+        );
+
+        setComposer(composerData || null);
+
+      } catch (error) {
+        console.error("Error fetching extras:", error);
+      }
     }
 
     fetchExtras();
   }, [id]);
 
-  useEffect(() => {
-    async function fetchMovie() {
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=8f5e24fc60071c7126030efdc18a2e6d`
-      );
 
-      const data = await res.json();
-      setMovie(data);
+  useEffect(() => {
+    if (!id) return;
+
+    async function fetchMovie() {
+      try {
+        const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+
+        const res = await fetch(
+          `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
+        );
+
+        const data = await res.json();
+
+        console.log("Movie ID:", id);
+        console.log("Movie response:", data);
+
+        if (!res.ok) {
+          console.error("TMDB error:", data);
+          return;
+        }
+
+        setMovie(data);
+
+      } catch (error) {
+        console.error("Error fetching movie:", error);
+      }
     }
 
     fetchMovie();
@@ -111,16 +139,25 @@ export default function Page({
 
   useEffect(() => {
     async function fetchHeroMovies() {
-      const res = await fetch(
-        `https://api.themoviedb.org/3/trending/movie/day?api_key=8f5e24fc60071c7126030efdc18a2e6d`
-      );
+      try {
+        const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
-      const data = await res.json();
-      setHeroMovies(data.results || []);
+        const res = await fetch(
+          `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
+        );
+
+        const data = await res.json();
+
+        setHeroMovies(data.results || []);
+
+      } catch (error) {
+        console.error("Error fetching hero movies:", error);
+      }
     }
 
     fetchHeroMovies();
   }, []);
+
 
   const currentMovie = {
     title: movie?.title || "Loading...",
@@ -130,11 +167,13 @@ export default function Page({
       : "fallback-image",
   };
 
+
   const handleNext = () => {
     if (heroMovies.length > 0) {
       setCurrentIndex((prev) => (prev + 1) % heroMovies.length);
     }
   };
+
 
   const handlePrev = () => {
     if (heroMovies.length > 0) {
@@ -143,16 +182,51 @@ export default function Page({
       );
     }
   };
-  if (!id || !movie) return <div className="text-white p-10 bg-[#141414] min-h-screen">Loading...</div>;
-  
+
+
+  if (!id || !movie) {
+    return (
+      <div className="text-white p-10 bg-[#141414] min-h-screen">
+        Loading...
+      </div>
+    );
+  }
+
+
   const rawPosters = [
-    movie?.backdrop_path ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}` : null,
-    movie?.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : null,
+    movie?.backdrop_path
+      ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+      : null,
+
+    movie?.poster_path
+      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+      : null,
+
   ].filter(Boolean) as string[];
 
-  const basePosters = rawPosters.length > 0 ? rawPosters : ["/fallback.jpg"];
-  const moviePosters = [...basePosters, ...basePosters, ...basePosters, ...basePosters];
-  const backdropGrid = [...moviePosters, ...moviePosters, ...moviePosters, ...moviePosters];
+
+  const basePosters =
+    rawPosters.length > 0
+      ? rawPosters
+      : ["/fallback.jpg"];
+
+
+  const moviePosters = [
+    ...basePosters,
+    ...basePosters,
+    ...basePosters,
+    ...basePosters
+  ];
+
+
+  const backdropGrid = [
+    ...moviePosters,
+    ...moviePosters,
+    ...moviePosters,
+    ...moviePosters
+  ];
+
+
   return (
     <div className="min-h-screen bg-[#141414] text-white font-['Manrope'] overflow-x-hidden">
       

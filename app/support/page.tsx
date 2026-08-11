@@ -11,14 +11,6 @@ interface FAQ {
   answer: string;
 }
 
-export async function getMovies() {
-  const res = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=8f5e24fc60071c7126030efdc18a2e6d`
-  );
-  const data = await res.json();
-  return data.results;
-}
-
 export default function SupportPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
@@ -76,25 +68,12 @@ export default function SupportPage() {
     }
   };
 
-  const faqColumns = [
-    [
-      { id: 0, num: '01', q: faqs[0].question, a: faqs[0].answer },
-      { id: 1, num: '02', q: faqs[1].question, a: faqs[1].answer },
-      { id: 2, num: '03', q: faqs[2].question, a: faqs[2].answer },
-      { id: 3, num: '04', q: faqs[3].question, a: faqs[3].answer }
-    ],
-    [
-      { id: 4, num: '05', q: faqs[4].question, a: faqs[4].answer },
-      { id: 5, num: '06', q: faqs[5].question, a: faqs[5].answer },
-      { id: 6, num: '07', q: faqs[6].question, a: faqs[6].answer },
-      { id: 7, num: '08', q: faqs[7].question, a: faqs[7].answer }
-    ]
-  ];
-
   useEffect(() => {
     const fetchMovies = async () => {
+      const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=8f5e24fc60071c7126030efdc18a2e6d`
+        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
       );
       const data = await res.json();
 
@@ -119,8 +98,8 @@ const filledImages = Array.from({ length: 36 }, (_, i) => {
     <div className="min-h-screen overflow-x-hidden bg-[#141414] font-['Manrope'] text-white">
       <Navbar />
 
+  {/* ================= SUPPORT FORM SECTION ================= */}
       <main className="pt-[168px] pb-[120px]">
-        {/* ================= SUPPORT FORM SECTION ================= */}
         <section
           id="support-form"
           className="

@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -10,9 +9,7 @@ import SliderNavigation from '@/components/SliderNavigation';
 import FreeTrialBanner from '@/components/FreeTrialBanner';
 
 
-
 export default function Home() {
-const [openFaq, setOpenFaq] = useState<number | null>(0);
 const [isYearly, setIsYearly] = useState(false);
 const [openIndex, setOpenIndex] = useState<number | null>(0);
 
@@ -25,9 +22,11 @@ const [moviePosters, setMoviePosters] = useState<string[]>([
 ]);
 
 useEffect(() => {
-  const API_KEY = "8f5e24fc60071c7126030efdc18a2e6d";
+  const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
-  fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&t=${Date.now()}`)
+  fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
+  )
     .then((res) => res.json())
     .then((data) => {
       if (data.results && data.results.length > 0) {
@@ -36,7 +35,6 @@ useEffect(() => {
           .map((m: any) => `https://image.tmdb.org/t/p/w500${m.poster_path}`);
         
         if (posters.length > 0) {
-          // تكرار الصور لضمان تعبئة شبكة الـ 36 خانة بالكامل وعدم تعليقها
           const extendedPosters = Array.from({ length: 40 }, (_, i) => posters[i % posters.length]);
           setMoviePosters(extendedPosters);
         }

@@ -1,10 +1,10 @@
 'use client';
-
 import { useState, useEffect, use } from "react";
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from '@/components/Footer';
 import FreeTrialBanner from '@/components/FreeTrialBanner';
+
+const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
 interface Show {
   id: number;
@@ -75,14 +75,14 @@ const backdropGrid = [...moviePosters, ...moviePosters, ...moviePosters, ...movi
     async function fetchShowData() {
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/tv/${id}?api_key=8f5e24fc60071c7126030efdc18a2e6d`
+          `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}`
         );
         const data = await res.json();
   
         if (data.success === false) {
 
           const movieRes = await fetch(
-            `https://api.themoviedb.org/3/movie/${id}?api_key=8f5e24fc60071c7126030efdc18a2e6d`
+            `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
           );
           const movieData = await movieRes.json();
   
@@ -105,7 +105,7 @@ const backdropGrid = [...moviePosters, ...moviePosters, ...moviePosters, ...movi
       setExpandedSeasonId(seasonNumber);
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=8f5e24fc60071c7126030efdc18a2e6d`
+          `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}`
         );
         const data = await res.json();
         setEpisodes(data.episodes || []);
@@ -123,25 +123,25 @@ const backdropGrid = [...moviePosters, ...moviePosters, ...moviePosters, ...movi
         let reviewsData;
 
         const creditsRes = await fetch(
-          `https://api.themoviedb.org/3/tv/${id}/credits?api_key=8f5e24fc60071c7126030efdc18a2e6d`
+          `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${API_KEY}`
         );
         const creditsJson = await creditsRes.json();
 
         if (creditsJson.success === false) {
           const movieCreditsRes = await fetch(
-            `https://api.themoviedb.org/3/movie/${id}/credits?api_key=8f5e24fc60071c7126030efdc18a2e6d`
+            `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`
           );
           credits = await movieCreditsRes.json();
 
           const movieReviewsRes = await fetch(
-            `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=8f5e24fc60071c7126030efdc18a2e6d`
+            `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}`
           );
           reviewsData = await movieReviewsRes.json();
         } else {
           credits = creditsJson;
 
           const reviewsRes = await fetch(
-            `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=8f5e24fc60071c7126030efdc18a2e6d`
+            `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${API_KEY}`
           );
           reviewsData = await reviewsRes.json();
         }
