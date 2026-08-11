@@ -22,7 +22,6 @@ export default function Trending({ movies = [], contentType }: TrendingProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Temporary display data for views
-  // TMDB does not provide real view counts in the trending response.
   const viewCounts = ['2K', '1.5K', '1.8K', '3K', '5K'];
 
   // Convert runtime from minutes to "1h 30min"

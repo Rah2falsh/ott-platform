@@ -10,7 +10,13 @@ interface FAQ {
   question: string;
   answer: string;
 }
-
+export async function getMovies() {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/movie/popular?api_key=8f5e24fc60071c7126030efdc18a2e6d`
+  );
+  const data = await res.json();
+  return data.results;
+}
 export default function SupportPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [acceptedTerms, setAcceptedTerms] = useState(false);

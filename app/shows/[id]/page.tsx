@@ -1,10 +1,10 @@
 'use client';
+
 import { useState, useEffect, use } from "react";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from '@/components/Footer';
 import FreeTrialBanner from '@/components/FreeTrialBanner';
-
-const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
 interface Show {
   id: number;
@@ -75,14 +75,14 @@ const backdropGrid = [...moviePosters, ...moviePosters, ...moviePosters, ...movi
     async function fetchShowData() {
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}`
+          `https://api.themoviedb.org/3/tv/${id}?api_key=8f5e24fc60071c7126030efdc18a2e6d`
         );
         const data = await res.json();
   
         if (data.success === false) {
 
           const movieRes = await fetch(
-            `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
+            `https://api.themoviedb.org/3/movie/${id}?api_key=8f5e24fc60071c7126030efdc18a2e6d`
           );
           const movieData = await movieRes.json();
   
@@ -105,7 +105,7 @@ const backdropGrid = [...moviePosters, ...moviePosters, ...moviePosters, ...movi
       setExpandedSeasonId(seasonNumber);
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}`
+          `https://api.themoviedb.org/3/tv/${id}/season/${seasonNumber}?api_key=8f5e24fc60071c7126030efdc18a2e6d`
         );
         const data = await res.json();
         setEpisodes(data.episodes || []);
@@ -123,25 +123,25 @@ const backdropGrid = [...moviePosters, ...moviePosters, ...moviePosters, ...movi
         let reviewsData;
 
         const creditsRes = await fetch(
-          `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${API_KEY}`
+          `https://api.themoviedb.org/3/tv/${id}/credits?api_key=8f5e24fc60071c7126030efdc18a2e6d`
         );
         const creditsJson = await creditsRes.json();
 
         if (creditsJson.success === false) {
           const movieCreditsRes = await fetch(
-            `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`
+            `https://api.themoviedb.org/3/movie/${id}/credits?api_key=8f5e24fc60071c7126030efdc18a2e6d`
           );
           credits = await movieCreditsRes.json();
 
           const movieReviewsRes = await fetch(
-            `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}`
+            `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=8f5e24fc60071c7126030efdc18a2e6d`
           );
           reviewsData = await movieReviewsRes.json();
         } else {
           credits = creditsJson;
 
           const reviewsRes = await fetch(
-            `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${API_KEY}`
+            `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=8f5e24fc60071c7126030efdc18a2e6d`
           );
           reviewsData = await reviewsRes.json();
         }
@@ -251,8 +251,8 @@ const backdropGrid = [...moviePosters, ...moviePosters, ...moviePosters, ...movi
             </div>
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row gap-6 w-full max-w-[1284px] mx-auto px-4 items-start mt-[30px]">
-          
+<div className="flex flex-row gap-6 w-full max-w-[1284px] items-start mt-[30px]">
+
   {/* LEFT SIDE */}
   <div className="flex flex-col gap-6 flex-1 min-w-0">
 
@@ -437,7 +437,7 @@ const backdropGrid = [...moviePosters, ...moviePosters, ...moviePosters, ...movi
 
 
   {/* RIGHT SIDE (SIDEBAR) */}
-  <div className="w-full lg:w-[416px] border border-[#262626] bg-[#1A1A1A] rounded-[10px] p-6 md:p-[40px] flex flex-col gap-[30px] flex-shrink-0">
+  <div className="w-[416px] border border-[#262626] bg-[#1A1A1A] rounded-[10px] p-[40px] flex flex-col gap-[30px] flex-shrink-0">
     <div className="flex flex-col gap-2">
       <p className="text-[#999] text-sm flex items-center gap-2">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -536,7 +536,7 @@ const backdropGrid = [...moviePosters, ...moviePosters, ...moviePosters, ...movi
       </div>
     </div>
     <div className="flex flex-col gap-3">
-      <p className="text-[#999] text-sm flex items-center gap-2">
+      <p className="text-[#999] text-sm flex itemsa-center gap-2">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path d="M9 18V5l12-2v13"/>
           <circle cx="6" cy="18" r="3"/>
